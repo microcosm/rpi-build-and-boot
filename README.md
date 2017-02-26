@@ -30,9 +30,9 @@ The magic comes when you're building a cluster of Raspberry Pis.  There's no nee
 
 ## Prerequisites
 
-1. Install [VirtualBox](https://www.virtualbox.org/). Or Parallels.  I actually use this with Parallels.
+1. Install [VirtualBox](https://www.virtualbox.org/). Or [Parallels](https://www.parallels.com/).  I actually use this with Parallels.
 1. Install [vagrant](http://www.vagrantup.com/).
-1. Install [Ansible](http://ansible.com).  I used pip.
+1. Install [Ansible](https://docs.ansible.com/ansible/intro_installation.html).  I used pip.
 
 ## Other Dependencies
 
@@ -69,7 +69,7 @@ _if not, then skip this section_
 
 ## Cross-compile!
 
-When you're ssh'ed into your virtual machine, you can access the root partition in /opt/raspberrypi/root.  Dig deeper, and you'll find /opt/raspberrypi/root/opt/openframeworks.  This is the armv7 OpenFrameworks directory, uncompressed and ready to go.  It's symlinked to /opt/openframeworks for simplicity.
+When you're ssh'ed into your virtual machine, you can access the root partition in `/opt/raspberrypi/root`.  Dig deeper, and you'll find `/opt/raspberrypi/root/opt/openframeworks`.  This is the armv7 OpenFrameworks directory, uncompressed and ready to go.  It's symlinked to `/opt/openframeworks for simplicity`.
 
 From your vagrant shell:
 
@@ -90,10 +90,10 @@ You can use `rsync` to sync your cross-compiled application to a running Raspber
 The provisioning process in the preceding section has modified your SD card image to enable NFS booting.  We need to write the boot partition _and not the root partition_ to an SD card.  Insert an SD card into your computer.  It can be tiny.  We're only writing about 60MB to it.
 
 1. On OSX I've written a tool to help make bootable cards: `./tool.py netboot image.img /dev/rdiskX [--ip=10.0.0.Y]`
-1. On Linux: `dd if=image.img of=/dev/rdiskX ibs=512 obs=1m count=<root_offset_sectors>`.  The root offset is the offset of the root partiion from before, but divided by 512.  On my SD card, that number is 122880.  This particular incantation only copies the first partition (the boot partition) to the SD card.  We don't want a root partition on this card, because it'll be using the NFS share.
-1. Examine the `cmdline.txt` file in the newly minted SD card.  It assigns the static IP address 10.0.0.101 (which you can change for subsequent cards) and designates 10.0.0.1 as the NFS server
+1. On Linux: `dd if=image.img of=/dev/rdiskX ibs=512 obs=1m count=<root_offset_sectors>`.  The root offset is the offset of the root partition from before, but divided by 512.  On my SD card, that number is 122880.  This particular incantation only copies the first partition (the boot partition) to the SD card.  We don't want a root partition on this card, because it'll be using the NFS share.
+1. Examine the `cmdline.txt` file in the newly minted SD card.  It assigns the static IP address `10.0.0.101` (which you can change for subsequent cards) and designates `10.0.0.1` as the NFS server
 
-It's worth noting that the ansible provisioning process has already altered the /etc/fstab on the root partition on the SD card image to inhibit mounting the root partition from the SD card.
+It's worth noting that the ansible provisioning process has already altered the `/etc/fstab` on the root partition on the SD card image to inhibit mounting the root partition from the SD card.
 
 ## NFS boot your Pi
 
@@ -107,12 +107,12 @@ Are you finished developing and want to flash a stand-alone SD card that doesn't
 
 There's some things you'll have to do first:
 
-1. On the Raspberry Pi _root_ partition, alter /etc/fstab and restore the mount point for /
+1. On the Raspberry Pi _root_ partition, alter /etc/fstab and restore the mount point for `/`
 1. On the Raspberry Pi _boot_ partition, remove the stuff after "rootwait"
 
 ## Simultaneously develop on your desktop and the Raspberry Pi
 
-If you put an OpenFrameworks project in the rpi-build-and-boot directory, and change config.make to point the OpenFrameworks root at /opt/openframeworks, you can compile in XCode on the Mac side AND compile from the /vagrant directory.
+If you put an OpenFrameworks project in the `rpi-build-and-boot` directory, and change config.make to point the OpenFrameworks root at `/opt/openframeworks`, you can compile in XCode on the Mac side AND compile from the `/vagrant` directory.
 
 ### Notes ###
 
