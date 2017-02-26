@@ -29,6 +29,8 @@
 
     - apt: name=sshpass
 
+    - apt: name=libffi-dev
+
     - pip: name=ansible
     - pip: name=paramiko
     - pip: name=PyYAML
