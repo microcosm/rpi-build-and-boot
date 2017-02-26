@@ -3,10 +3,10 @@
   remote_user: vagrant
   sudo: yes
   vars:
-    of_version: of_v0.9.0_linuxarmv7l_release
-    image: 2015-09-24-raspbian-jessie.img
-    offset_boot: 4194304
-    offset_root: 62914560
+    of_version: of_v0.9.7_linuxarmv7l_release
+    image: rasp.dmg
+    offset_boot: 1048576
+    offset_root: 105906176
   tasks:
     - apt: upgrade=dist update_cache=yes
     - command: mkdir -p /opt/raspberrypi creates=/opt/raspberrypi
