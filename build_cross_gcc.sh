@@ -44,8 +44,8 @@ wget -nc https://ftp.gnu.org/gnu/glibc/$GLIBC_VERSION.tar.xz
 wget -nc https://ftp.gnu.org/gnu/mpfr/$MPFR_VERSION.tar.xz
 wget -nc https://ftp.gnu.org/gnu/gmp/$GMP_VERSION.tar.xz
 wget -nc https://ftp.gnu.org/gnu/mpc/$MPC_VERSION.tar.gz
-wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$ISL_VERSION.tar.bz2
-wget -nc ftp://gcc.gnu.org/pub/gcc/infrastructure/$CLOOG_VERSION.tar.gz
+wget -nc http://ftp.vim.org/languages/gcc/infrastructure/$ISL_VERSION.tar.bz2
+wget -nc http://ftp.vim.org/languages/gcc/infrastructure/$CLOOG_VERSION.tar.gz
 
 
 # Extract everything
