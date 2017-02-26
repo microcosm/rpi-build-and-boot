@@ -38,7 +38,6 @@ The magic comes when you're building a cluster of Raspberry Pis.  There's no nee
 
 1. Clone this repository and cd into it.
 1. Download your preferred Raspberry Pi SD card image.  I'm using [2015-09-24-raspbian-jessie.img](http://downloads.raspberrypi.org/raspbian_latest).
-1. Download OpenFrameworks-0.9 for armv7.  Leave it compressed.
 
 ## Get the image ready
 

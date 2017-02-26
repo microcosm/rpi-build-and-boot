@@ -1,2 +1,4 @@
 *.dmg
 .vagrant
+playbook.retry
+of_*_linuxarmv7l_release.tar.gz

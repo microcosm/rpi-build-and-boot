@@ -3,7 +3,8 @@
   remote_user: vagrant
   sudo: yes
   vars:
-    of_version: of_v0.9.7_linuxarmv7l_release
+    of_version: v0.9.7
+    of_version_full: of_v0.9.7_linuxarmv7l_release
     image: rasp.dmg
     offset_boot: 1048576
     offset_root: 105906176
@@ -100,10 +101,12 @@
     - lineinfile: dest="/home/vagrant/.profile" line="export PLATFORM_ARCH=armv7l"
     - lineinfile: dest="/home/vagrant/.profile" line="export PKG_CONFIG_PATH=$RPI_ROOT/usr/lib/arm-linux-gnueabihf/pkgconfig:$RPI_ROOT/usr/share/pkgconfig:$RPI_ROOT/usr/lib/pkgconfig"
     
-    - unarchive: src={{of_version}}.tar.gz dest=/opt/raspberrypi/root/opt creates=/opt/raspberrypi/root/opt/{{of_version}}
-    - file: src={{of_version}} dest=/opt/raspberrypi/root/opt/openframeworks state=link
+    - get_url:
+        url: http://openframeworks.cc/versions/{{of_version}}/{{of_version_full}}.tar.gz
+        dest: /vagrant/
+    - unarchive: src={{of_version_full}}.tar.gz dest=/opt/raspberrypi/root/opt creates=/opt/raspberrypi/root/opt/{{of_version_full}}
+    - file: src={{of_version_full}} dest=/opt/raspberrypi/root/opt/openframeworks state=link
     - file: src=/opt/raspberrypi/root/opt/openframeworks dest=/opt/openframeworks state=link
-    - command: chown -R vagrant /opt/raspberrypi/root/opt/{{of_version}}
+    - command: chown -R vagrant /opt/raspberrypi/root/opt/{{of_version_full}}
 
   handlers:
-
