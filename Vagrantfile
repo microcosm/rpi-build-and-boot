@@ -9,7 +9,7 @@ Vagrant.configure(2) do |config|
   end
 
   # If you want to use this system to netboot Raspberry Pi, then uncomment this line
-  config.vm.network "public_network", bridge: 'ask', ip: "10.0.0.1"
+  #config.vm.network "public_network", bridge: 'ask', ip: "10.0.0.1"
 
   config.vm.provision "ansible" do |ansible|
     ansible.playbook = "playbook.yml"
