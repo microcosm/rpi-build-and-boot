@@ -78,6 +78,7 @@
 
     - lineinfile: dest="/home/vagrant/.profile" line="export PLATFORM_VARIANT=raspberry2"
     - lineinfile: dest="/home/vagrant/.profile" line="export TOOLCHAIN_PREFIX=arm-linux-gnueabihf"
+    - lineinfile: dest="/home/vagrant/.profile" line="export GCC_PREFIX=arm-linux-gnueabihf"
     
     - get_url:
         url: http://openframeworks.cc/versions/{{of_version}}/{{of_version_full}}.tar.gz
