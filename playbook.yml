@@ -84,7 +84,7 @@
         url: http://openframeworks.cc/versions/{{of_version}}/{{of_version_full}}.tar.gz
         dest: /vagrant/
     - unarchive: src={{of_version_full}}.tar.gz dest=/opt/raspberrypi/root/opt creates=/opt/raspberrypi/root/opt/{{of_version_full}}
-    - file: src={{of_version_full}} dest=/opt/raspberrypi/root/opt/openframeworks state=link
+    - file: src=/opt/raspberrypi/root/opt/{{of_version_full}} dest=/opt/raspberrypi/root/opt/openframeworks state=link
     - file: src=/opt/raspberrypi/root/opt/openframeworks dest=/opt/openframeworks state=link
     - command: chown -R vagrant /opt/raspberrypi/root/opt/{{of_version_full}}
 
